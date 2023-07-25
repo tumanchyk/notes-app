@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Notes app</title>
+  </head>
+  <body class="bg-stone-200">
+    <div class="container mx-auto px-20">
+      <h1 class="font-bold uppercase text-[32px] content-center py-5">
+        Notes app
+      </h1>
+      <ul
+        class="flex gap-7 text-white font-bold bg-black px-20 py-10 inline-block mx-auto"
+      >
+        <li class="">Name</li>
+        <li class="">Created</li>
+        <li class="">Category</li>
+        <li class="">Content</li>
+        <li class="">Dates</li>
+        <li>Icons</li>
+      </ul>
+      <ul id="noteList"></ul>
+
+      <button
+        id="create-note"
+        class="text-white font-bold bg-zinc-950 text-[20px] px-[50px] py-[15px] mt-[20px] hover:bg-zinc-800 cursor-pointer"
+      >
+        Create note
+      </button>
+      <div id="noteForm" style="display: none">
+        <form
+          class="flex flex-col flex-wrap bg-zinc-700 w-[500px] py-[50px] px-[40px] mx-auto mt-[30px] gap-[25px]"
+        >
+          <input
+            type="text"
+            id="nameInput"
+            placeholder="Note name"
+            autocomplete="off"
+            class="bg-[transparent] border-b-[1px] border-white outline-0 text-white p-3"
+          />
+          <div>
+            <h3 class="text-white mb-[10px] font-medium">Choose category</h3>
+            <select id="categoryInput" class="w-[100%] p-3 outline-0">
+              <option value="Quote">Quote</option>
+              <option value="Task">Task</option>
+              <option value="Idea">Idea</option>
+              <option value="Random thought">Random thought</option>
+            </select>
+          </div>
+          <textarea
+            id="contentInput"
+            placeholder="Enter content"
+            class="resize-none ext-black p-3 outline-0"
+          ></textarea>
+          <button
+            id="add-note"
+            class="cursor-pointer text-white font-bold bg-[transparent] border-2 uppercase border-white [20px] py-[15px] mt-[20px] hover:bg-zinc-800"
+          >
+            Add note
+          </button>
+        </form>
+      </div>
+      <ul id="noteList" class="gap-10 my-[30px]"></ul>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
