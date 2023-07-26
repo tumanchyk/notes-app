@@ -7,11 +7,28 @@ export default function createNote({
     id
 }) {
   return `
-        <li id={${id}} class='flex bg-black text-white'>
-          <h2>${name}</h2>
-          <p>${creatingDate}</p>
-          <p>${category}</p>
-          <p>${content}</p>
-          <p>${dates}</p>
-      </li> `;
+        <li id={${id}} class='flex bg-[rgba(0,0,0,0.6)] p-5 text-white px-20 text-[20px] border-b-2 border-[rgba(255,255,255,0.5)]'>
+          <h2 class='capitalize basis-1/4 truncate'>${name}</h2>
+          <p class="basis-1/4">${creatingDate}</p>
+          <p class="basis-1/4">${category}</p>
+          <p class="basis-1/3 truncate">${content}</p>
+          <p class="basis-1/4">${dates}</p>
+            <div class="flex gap-5">
+          <button id='edit-note' class='text-white hover:text-[rgba(255,255,255,0.5)]'>
+            <svg class="w-[28px] h-[28px] fill-current">
+              <use href="../src/icons/sprite.svg#icon-edit"></use>
+            </svg>
+          </button>
+          <button id='archive-note'>
+            <svg class="w-[25px] h-[25px] text-white fill-current">
+              <use href="../src/icons/sprite.svg#icon-archive-add"></use>
+            </svg>
+          </button>
+          <button data-delete={${id}}>
+            <svg class="w-[25px] h-[25px] text-white fill-current">
+              <use href="../src/icons/sprite.svg#icon-trash"></use>
+            </svg>
+          </button>
+        </div>
+      </li>`;
 }

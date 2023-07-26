@@ -1,7 +1,19 @@
 import createNote from "./js/markupNote.js";
 import { formatDate } from "./js/formateDate.js";
-let notes = [];
-let noteIdCounter = 1;
+import { showForm, hideForm, clearFormInputs } from './js/formFunctions.js';
+import { deleteNote } from "./js/noteFunction.js";
+import { getDataFromStorage } from "./js/localstorage.js";
+updateNoteList()
+
+// let notes = [{
+//     name: 'food',
+//     creatingDate: '23.09.09',
+//     category: 'list ',
+//     content: 'buy food',
+//     dates: '23/09/23', 
+//     id: 6
+// }];
+let noteIdCounter = parseInt(localStorage.getItem('noteIdCounter')) || 1;
 
 function addNote(e) {
     e.preventDefault();
@@ -12,48 +24,44 @@ function addNote(e) {
     if (nameInput !== '' && categoryInput !== '' && contentInput !== '') {
         const creatingDate = new Date();
         const id = `note-${noteIdCounter}`;
+        const notes = getDataFromStorage()
         noteIdCounter++;
 
-        const newNote = createNote({
+        const newNote = {
             name: nameInput,
             creatingDate: formatDate(creatingDate),
             category: categoryInput,
             content: contentInput,
             id: id
-        });
-
+        };
         notes.push(newNote);
+        localStorage.setItem('notes', JSON.stringify(notes));
+        localStorage.setItem('noteIdCounter', noteIdCounter); 
+
         updateNoteList();
         hideForm();
         clearFormInputs();
     }
 }
 
-function updateNoteList() {
+
+export function updateNoteList() {
     const noteList = document.getElementById('noteList');
-    noteList.innerHTML = notes.join('');
+    const notes = getDataFromStorage();
+    noteList.innerHTML = notes.map(item => createNote(item)).join('');
+    if (notes.length) {
+      document.querySelectorAll('[data-delete]').forEach(button => {
+    button.addEventListener('click', function() {
+    const noteId = this.closest('li').id.slice(1, -1);
+    deleteNote(noteId);
+  });
+});
+
+    }
 }
 
 
-function showForm() {
-    const noteForm = document.getElementById('noteForm');
-    const btn = document.querySelector('#create-note')
-    btn.style.display = 'none';
-    noteForm.style.display = 'block';
-}
 
-function hideForm() {
-    const noteForm = document.getElementById('noteForm');
-    const btn = document.querySelector('#create-note')
-    btn.style.display = 'block';
-    noteForm.style.display = 'none';
-}
-
-function clearFormInputs() {
-    document.getElementById('nameInput').value = '';
-    document.getElementById('categoryInput').value = '';
-    document.getElementById('contentInput').value = '';
-}
-
-document.querySelector('#create-note').addEventListener('click', showForm);
-document.querySelector('#add-note').addEventListener('click', (e) => addNote(e));
+document.getElementById('create-note').addEventListener('click', showForm);
+document.getElementById('close-form').addEventListener('click', hideForm);
+document.getElementById('add-note').addEventListener('click', (e) => addNote(e));

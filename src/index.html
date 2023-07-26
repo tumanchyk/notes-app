@@ -16,14 +16,30 @@
         Notes app
       </h1>
       <ul
-        class="flex gap-7 text-white font-bold bg-black px-20 py-10 inline-block mx-auto"
+        class="flex text-[24px] text-white font-bold bg-black px-20 py-10 inline-block mx-auto"
       >
-        <li class="">Name</li>
-        <li class="">Created</li>
-        <li class="">Category</li>
-        <li class="">Content</li>
-        <li class="">Dates</li>
-        <li>Icons</li>
+        <li class="basis-1/4">Name</li>
+        <li class="basis-1/4">Created</li>
+        <li class="basis-1/4">Category</li>
+        <li class="basis-1/3">Content</li>
+        <li class="basis-1/4">Dates</li>
+        <li class="flex gap-5">
+          <button>
+            <svg class="w-[28px] h-[28px] text-white fill-current">
+              <use href="../src/icons/sprite.svg#icon-edit"></use>
+            </svg>
+          </button>
+          <button>
+            <svg class="w-[25px] h-[25px] text-white fill-current">
+              <use href="../src/icons/sprite.svg#icon-archive-add"></use>
+            </svg>
+          </button>
+          <button>
+            <svg class="w-[25px] h-[25px] text-white fill-current">
+              <use href="../src/icons/sprite.svg#icon-trash"></use>
+            </svg>
+          </button>
+        </li>
       </ul>
       <ul id="noteList"></ul>
 
@@ -35,8 +51,19 @@
       </button>
       <div id="noteForm" style="display: none">
         <form
-          class="flex flex-col flex-wrap bg-zinc-700 w-[500px] py-[50px] px-[40px] mx-auto mt-[30px] gap-[25px]"
+          class="flex relative flex-col flex-wrap bg-[rgba(0,0,0,0.6)] w-[500px] py-[50px] px-[40px] mx-auto mt-[30px] gap-[25px]"
         >
+          <button
+            id="close-form"
+            class="absolute top-5 right-5 text-white hover:text-[rgba(255,255,255,0.5)]"
+          >
+            <svg class="w-[30px] h-[30px] fill-current">
+              <use href="../src/icons/sprite.svg#icon-cross"></use>
+            </svg>
+          </button>
+          <h2 class="text-center text-white font-bold text-[24px] mb-[20px]">
+            Add a new note
+          </h2>
           <input
             type="text"
             id="nameInput"
@@ -47,8 +74,8 @@
           <div>
             <h3 class="text-white mb-[10px] font-medium">Choose category</h3>
             <select id="categoryInput" class="w-[100%] p-3 outline-0">
-              <option value="Quote">Quote</option>
               <option value="Task">Task</option>
+              <option value="Quote">Quote</option>
               <option value="Idea">Idea</option>
               <option value="Random thought">Random thought</option>
             </select>
@@ -60,13 +87,21 @@
           ></textarea>
           <button
             id="add-note"
-            class="cursor-pointer text-white font-bold bg-[transparent] border-2 uppercase border-white [20px] py-[15px] mt-[20px] hover:bg-zinc-800"
+            class="cursor-pointer text-white font-bold bg-[transparent] border-2 uppercase border-white [20px] py-[15px] mt-[20px] hover:bg-black hover:border-black"
           >
             Add note
           </button>
         </form>
       </div>
       <ul id="noteList" class="gap-10 my-[30px]"></ul>
+      <!-- <div>
+        <ul class="flex">
+          <li>Note Category</li>
+          <li>Archived</li>
+          <li>Active</li>
+        </ul>
+        <ul id="achivedList"></ul>
+      </div> -->
     </div>
     <script type="module" src="./index.js"></script>
   </body>

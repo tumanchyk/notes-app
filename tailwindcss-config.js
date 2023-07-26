@@ -6,6 +6,9 @@ module.exports = {
   fontFamily: {
     'Montserrat': ['Montserrat', 'sans-serif'],
   },
+  // colors: {
+  //   formBg: 'rgba(var(--color-bg), <alpha-value>)',
+  // },
   variants: {},
   plugins: [],
 };
