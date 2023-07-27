@@ -11,7 +11,7 @@
     <title>Notes app</title>
   </head>
   <body class="bg-stone-200">
-    <div class="container mx-auto px-20">
+    <div class="container mx-auto px-20 mb-8">
       <h1 class="font-bold uppercase text-[32px] content-center py-5">
         Notes app
       </h1>
@@ -45,7 +45,7 @@
 
       <button
         id="create-note"
-        class="text-white font-bold bg-zinc-950 text-[20px] px-[50px] py-[15px] mt-[20px] hover:bg-zinc-800 cursor-pointer"
+        class="text-white font-bold bg-zinc-950 text-[20px] px-[50px] py-[15px] mt-[50px] hover:bg-zinc-800 cursor-pointer"
       >
         Create note
       </button>
@@ -93,15 +93,16 @@
           </button>
         </form>
       </div>
-      <ul id="noteList" class="gap-10 my-[30px]"></ul>
-      <!-- <div>
-        <ul class="flex">
-          <li>Note Category</li>
-          <li>Archived</li>
-          <li>Active</li>
+      <div id="archive-container" style="display: none">
+        <ul
+          class="flex text-[24px] text-white font-bold bg-black px-20 py-10 inline-block mx-auto mt-[50px]"
+        >
+          <li class="basis-1/2">Category</li>
+          <li class="basis-1/3">Archived</li>
+          <li class="basis-1/3">Active</li>
         </ul>
-        <ul id="achivedList"></ul>
-      </div> -->
+        <ul id="archived-list"></ul>
+      </div>
     </div>
     <script type="module" src="./index.js"></script>
   </body>

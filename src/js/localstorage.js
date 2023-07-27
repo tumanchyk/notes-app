@@ -1,3 +1,3 @@
-export function getDataFromStorage() {
-    return localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : []
+export function getDataFromStorage(item) {
+    return localStorage.getItem(item) ? JSON.parse(localStorage.getItem(item)) : []
  }
