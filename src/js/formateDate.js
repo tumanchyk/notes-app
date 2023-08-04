@@ -10,3 +10,9 @@ export const formatDate = (date) => {
     const year = dateObj.getFullYear();
     return `${months[monthIndex]} ${day}, ${year}`;
 }
+
+ export const options = {
+      year: '2-digit',
+      month: '2-digit',
+      day: '2-digit',
+};
